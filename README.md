@@ -43,4 +43,6 @@ Above is a very important step, the migrations won't work without creating the d
 
 This will run the migrations (i.e. create the tables you defined in the migrations folder, in _exports.up_)
 
+* Id coloumn is auto incremented, and default counter is set at 0. when we add new question default value of counter will be zero.
+
 

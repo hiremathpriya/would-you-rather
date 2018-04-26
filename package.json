@@ -21,6 +21,7 @@
     "express": "^4.16.2",
     "knex": "^0.14.6",
     "pg": "^7.4.1"
+
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
