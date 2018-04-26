@@ -8,9 +8,11 @@ import Menu from './Menu'
 const App = () => (
   <div className='app'>
     <Router>
+      <div>
       <Route exact path='/' component={Menu}/>
       <Route exact path='/submit' component={Submit}/>
-      <Routeexact path='/play' component={Play}/>
+      <Route exact path='/play' component={Play}/>
+      </div>
     </Router>
   </div>
 )
