@@ -9,6 +9,7 @@
     "start": "node server",
     "postinstall": "knex migrate:latest && knex seed:run",
     "heroku-bostbuild": "webpack -p --progress"
+
   },
   "author": "EDA",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "pg": "^7.4.1",
     "postinstall": "^0.1.2",
     "react-router-dom": "^4.2.2"
+
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
