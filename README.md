@@ -26,3 +26,23 @@ User stories
 - A user wants to exit the game and go back to the main menu
 
 - A user wants to submit there own question for other users to choose from
+
+## Creating Database
+
+* Assumption: postgres database is installed locally on the machine and is available to be accessed via `psql`
+
+- run following command to create database (don't forget the `;`)
+
+    `CREATE DATABASE useless-game;`
+
+Above is a very important step, the migrations won't work without creating the database first.
+
+* Run migrations
+
+- `yarn knex migrate:latest`
+
+This will run the migrations (i.e. create the tables you defined in the migrations folder, in _exports.up_)
+
+* Id coloumn is auto incremented, and default counter is set at 0. when we add new question default value of counter will be zero.
+
+
