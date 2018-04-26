@@ -1,4 +1,100 @@
-.error {
-  color: red;
-  font-weight: bold;
+body {
+    font-size: 15px;
+}
+
+#title {
+    margin-top: 10px;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    height: 200px;
+
+}
+
+input[type="submit"] {
+    background-color: plum;
+    text-transform: none;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    font-size: 28px;
+    color: black;
+    height: 50px;
+}
+
+nput[type="submit"]:focus {
+    border-color:transparent;
+}
+
+.submit {
+    width: 100%;
+    background-color: plum;
+}
+
+.input {
+    width: 100%;
+}
+
+form {
+    margin-bottom: 0px;
+}
+
+/* On mouse-over, add a deeper shadow */
+.card:hover, .card2:hover, .card3:hover, input[type="submit"]:hover {
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.2);
+}
+
+/* Add some padding inside the card container */
+.holder {
+    padding: 2px 16px;
+}
+
+#card1{
+    background-color:plum;
+    text-align: center;
+}
+
+#card2{
+    background-color:gold;
+    text-align: center;
+}
+
+#card3{
+    background-color:burlywood;
+    text-align: center;
+}
+
+#question2 {
+    margin-top: 60px;
+}
+
+#question1 {
+    margin-top: 60px;
+}
+
+.row {
+    text-align: center;
+}
+
+.card2 {
+    /* Add shadows to create the "card" effect */
+    margin-top: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    height: 50px;
+
+}
+
+.card3 {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    height: 50px;
+
 }
