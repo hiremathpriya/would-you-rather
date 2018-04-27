@@ -12,8 +12,5 @@ test('recievedQuestion updated to database has been recived', () => {
 })
 
 
-test('postQuestions', () => {
-
-})
 
 
