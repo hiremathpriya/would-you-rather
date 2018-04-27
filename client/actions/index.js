@@ -1,21 +1,25 @@
 import request from 'superagent'
 
 export const SHOW_ERROR = 'SHOW_ERROR'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const REQUEST_POSTS = 'REQUEST_POSTS'
+export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
+export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS'
+export const UPDATE_COUNTERS = 'UPDATE_COUNTERS'
 
-export const requestPosts = () => {
+export const requestQuestions = () => {
   return {
-    type: REQUEST_POSTS
+    type: REQUEST_QUESTIONS
   }
 }
 
-export const receivePosts = (posts) => {
+export const receiveQuestions = (questions) => {
+  let index = Math.floor(Math.random() * questions.length-1)
+  
   return {
-    type: RECEIVE_POSTS,
-    posts: posts.map(post => post.data)
+    type: RECEIVE_QUESTIONS,
+    questions: questions[index]
   }
-}
+}// Edit cats action???
+
 
 export const showError = (errorMessage) => {
   return {
@@ -24,16 +28,36 @@ export const showError = (errorMessage) => {
   }
 }
 
-export function fetchPosts (subreddit) {
+export const updateQuestionCounter = (question, newCount1, newCount2) => {
+  return {
+    type: UPDATE_COUNTERS,
+    counter1: question.counter1 + newCount1, 
+    counter2: question.counter2 + newCount2
+    }
+}
+
+// the below is the equivalent of our api get request. this is not an action, but calls upon actions to get the data.
+export function fetchQuestions () {
   return (dispatch) => {
-    dispatch(requestPosts())
+    dispatch(requestQuestions())
     return request
-      .get(`/api/v1/reddit/subreddit/${subreddit}`)
+      .get('/api/v1')
       .then(res => {
-        dispatch(receivePosts(res.body))
+        dispatch(receiveQuestions(res.body))
       })
       .catch(err => {
         dispatch(showError(err.message))
       })
   }
 }
+
+export function updateQuestionCounterRequest (question, newCount1, newCount2) {
+  let {id, counter1, counter2} = question
+  return dispatch => {
+      request
+          .put('/api/v1/' + id)
+          .send({counter1, counter2})
+          .then(res => dispatch(updateQuestionCounter(question, newCount1, newCount2)))
+  }
+}
+
