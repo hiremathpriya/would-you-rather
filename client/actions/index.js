@@ -11,9 +11,10 @@ export const requestQuestions = () => {
 }
 
 export const receiveQuestions = (questions) => {
+  let index = Math.floor(Math.random() * questions.length-1)
   return {
     type: RECEIVE_QUESTIONS,
-    questions: questions[0]
+    questions: questions[index]
   }
 }
 
