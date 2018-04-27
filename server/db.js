@@ -13,7 +13,6 @@ function updateCounter(id, counter1, counter2, testConn) {
     return conn('game-questions')
         .where('id', id)
         .update({ counter1, counter2 })
-        .then(() => res.sendStatus(202))
 }
 
 

@@ -8,7 +8,7 @@ const Question = ({option, numberofclicks, totalnumberofclicks, isShowingPercent
 
   return <div>
     {option}<br/>
-      <div className={classes}>{percentage}%</div>
+      {!isNaN(percentage) && <div className={classes}>{percentage}%</div>}
     </div>
 }
   

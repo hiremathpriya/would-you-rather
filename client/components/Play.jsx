@@ -3,11 +3,6 @@ import Question from './Question'
 import { connect } from 'react-redux'
 import { fetchQuestions, updateQuestionCounterRequest } from '../actions'
 
-// var name = 'Harrison'
-
-// name = "Harrison" + " Symes"
-
-// name + " Symes"
 
 
 class Play extends React.Component {
@@ -35,18 +30,26 @@ class Play extends React.Component {
             newCount2: 0,
             isShowingPercentage: false
         })
+
     }
 
 
     addToCountOne() {
         this.setState(({newCount1}) => ({newCount1: newCount1 + 1, isShowingPercentage: true}) )
+        this.props.dispatch(updateQuestionCounterRequest(this.props.questions, 1, 0))
+
     }
 
+
+
     addToCountTwo() {
-        this.setState(({newCount2}) => ({newCount2: newCount2 + 1}))
+        this.setState(({newCount2}) => ({newCount2: newCount2 + 1, isShowingPercentage: true}))
+        this.props.dispatch(updateQuestionCounterRequest(this.props.questions, 0, 1))
+
     }
 
     render() {
+        console.log(this.state, this.props)
         console.log(this.state.newCount1, this.state.newCount2)
         return (
             <div>

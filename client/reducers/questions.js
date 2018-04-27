@@ -6,8 +6,12 @@ function questions (state = {}, action){
         case RECEIVE_QUESTIONS:
             return action.questions
         case UPDATE_COUNTERS: 
-            return action.counter1,
-                action.counter2
+            const newState = {
+                ...state,
+                counter1: action.counter1,
+                counter2: action.counter2
+            }
+            return newState
         
             default: 
             return state
