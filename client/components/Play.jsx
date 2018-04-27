@@ -3,11 +3,23 @@ import Question from './Question'
 import { connect } from 'react-redux'
 import { fetchQuestions } from '../actions'
 
+// var name = 'Harrison'
+
+// name = "Harrison" + " Symes"
+
+// name + " Symes"
+
+
 class Play extends React.Component {
 
     componentDidMount() {
+        this.refreshQuestions()
+    }
+
+    refreshQuestions() {
         this.props.dispatch(fetchQuestions())
     }
+
 
     render() {
         return (
@@ -34,6 +46,13 @@ class Play extends React.Component {
                     </div>
                     <div className="row">
                         <div id="card3" className="card2">
+                            <div className="holder">
+                                <h4 onClick={this.refreshQuestions.bind(this)}><b>Next</b></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div id="card4" className="card2">
                             <div className="holder">
                                 <h4 id=""><b>Return to landing page</b></h4>
                             </div>
