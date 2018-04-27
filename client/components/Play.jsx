@@ -2,6 +2,7 @@ import React from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
 import { fetchQuestions, updateQuestionCounterRequest } from '../actions'
+import { Link } from 'react-router-dom'
 
 
 
@@ -30,7 +31,6 @@ class Play extends React.Component {
             newCount2: 0,
             isShowingPercentage: false
         })
-
     }
 
 
@@ -80,13 +80,15 @@ class Play extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="row">
-                        <div id="card4" className="card2">
-                            <div className="holder">
-                                <h4 id=""><b>Return to landing page</b></h4>
+                    <Link to={'/'}>
+                        <div className="row">
+                            <div id="card4" className="card2">
+                                <div className="holder">
+                                    <h4 id=""><b>Return to landing page</b></h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
                 </div>
             </div>
         )
