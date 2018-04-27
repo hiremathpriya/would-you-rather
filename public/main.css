@@ -105,3 +105,11 @@ form {
     height: 50px;
 
 }
+
+.showing {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}

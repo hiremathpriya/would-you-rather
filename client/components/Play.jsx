@@ -1,7 +1,7 @@
 import React from 'react'
 import Question from './Question'
 import { connect } from 'react-redux'
-import { fetchQuestions } from '../actions'
+import { fetchQuestions, updateQuestionCounterRequest } from '../actions'
 
 // var name = 'Harrison'
 
@@ -12,16 +12,42 @@ import { fetchQuestions } from '../actions'
 
 class Play extends React.Component {
 
+    constructor(props){
+        super(props)
+        this.state= {
+            newCount1: 0,
+            newCount2: 0,
+            isShowingPercentage: false
+        }
+        this.refreshQuestions = this.refreshQuestions.bind(this)
+        this.addToCountOne = this.addToCountOne.bind(this)
+        this.addToCountTwo = this.addToCountTwo.bind(this)
+    }
+
     componentDidMount() {
         this.refreshQuestions()
     }
 
     refreshQuestions() {
         this.props.dispatch(fetchQuestions())
+        this.setState({
+            newCount1: 0,
+            newCount2: 0,
+            isShowingPercentage: false
+        })
     }
 
 
+    addToCountOne() {
+        this.setState(({newCount1}) => ({newCount1: newCount1 + 1, isShowingPercentage: true}) )
+    }
+
+    addToCountTwo() {
+        this.setState(({newCount2}) => ({newCount2: newCount2 + 1}))
+    }
+
     render() {
+        console.log(this.state.newCount1, this.state.newCount2)
         return (
             <div>
                 <div className="container">
@@ -30,16 +56,16 @@ class Play extends React.Component {
                     </div>
                     <div className="row">
                         <div className="six columns">
-                            <div id="card1" className="card">
+                            <div id="card1" className="card" onClick={this.addToCountOne}>
                                 <div id="holder1" className="holder">
-                                    <h4 id="question1"><b><Question option={this.props.questions.Option1} numberofclicks={this.props.questions.counter1  } totalnumberofclicks={this.props.questions.counter1 +  this.props.questions.counter2}/></b></h4>
+                                    <h4 id="question1"><b><Question isShowingPercentage={this.state.isShowingPercentage} question={this.props.questions} option={this.props.questions.Option1} numberofclicks={this.props.questions.counter1  } totalnumberofclicks={this.props.questions.counter1 +  this.props.questions.counter2}/></b></h4>
                                 </div>
                             </div>
                         </div>
                         <div className="six columns">
-                            <div id="card2" className="card">
+                            <div id="card2" className="card" onClick={this.addToCountTwo}>
                                 <div className="holder">
-                                    <h4 id="question2"><b><Question option={this.props.questions.Option2} numberofclicks={this.props.questions.counter2 } totalnumberofclicks={this.props.questions.counter1 +  this.props.questions.counter2}/></b></h4>
+                                    <h4 id="question2"><b><Question isShowingPercentage={this.state.isShowingPercentage} question={this.props.questions} option={this.props.questions.Option2} numberofclicks={this.props.questions.counter2 } totalnumberofclicks={this.props.questions.counter1 +  this.props.questions.counter2}/></b></h4>
                                 </div>
                             </div>
                         </div>
@@ -47,7 +73,7 @@ class Play extends React.Component {
                     <div className="row">
                         <div id="card3" className="card2">
                             <div className="holder">
-                                <h4 onClick={this.refreshQuestions.bind(this)}><b>Next</b></h4>
+                                <h4 onClick={this.refreshQuestions}><b>Next</b></h4>
                             </div>
                         </div>
                     </div>
