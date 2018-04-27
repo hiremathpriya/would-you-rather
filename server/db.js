@@ -7,8 +7,17 @@ function getQuestions (testConn) {
     return conn('game-questions').select()
   }
 
+function saveQuestions(questions, testConn){
+    const conn = testConn || connection
+    console.log({db:questions})
+    return conn('game-questions')
+    .insert({Option1:questions.option1, Option2:questions.option2})
+    
+}
+
 
 module.exports = {
-    getQuestions
+    getQuestions, saveQuestions,
+    saveQuestions
     
 }

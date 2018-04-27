@@ -10,9 +10,12 @@ export function recievedQuestions(){
 
 export function postQuestions (questions) {
   console.log('posting')
-      return request
+      return (dispatch) => 
+        request
         .post('/api/v1')
+        .send(questions)
         .then(res => {
+          console.log(res)
           dispatch(recievedQuestions(res.body))
         })
         .catch(err => {

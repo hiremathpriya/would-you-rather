@@ -12,5 +12,11 @@ router.get('/', function (req, res) {
     })
 })
 
+router.post('/', function (req, res) {
+    console.log(req.body)
+    db.saveQuestions(req.body)
+        .then(() => res.sendStatus(200))
+        .catch(err => console.log(err))
+    })
 
 module.exports = router
