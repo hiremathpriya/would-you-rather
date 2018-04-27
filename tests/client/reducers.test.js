@@ -1,8 +1,21 @@
-import questionReducer from '../../client/reducers/questions'
 
 
-test('receive questions reducer returns questions', () => {
+const formReducer = require('../../client/reducers/formReducers')
 
-    const expected = ''
+test('Reducer initial state', () => {
+  const initialState =false
+       
+  const expected = true
+    
+   
+  const action = {
+    type: 'SUBMITTED'
+    
+  }
 
+  const actual = formReducer(initialState, action)
+
+  expect(actual).toEqual(expected)
+  
 })
+

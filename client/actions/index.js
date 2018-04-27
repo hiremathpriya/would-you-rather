@@ -1,5 +1,12 @@
 import request from 'superagent'
 
+
+export function recievedQuestions(){
+    return {
+    type:'SUBMITTED'
+  }
+}
+
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS'
@@ -21,12 +28,21 @@ export const receiveQuestions = (questions) => {
 }// Edit cats action???
 
 
-export const showError = (errorMessage) => {
-  return {
-    type: SHOW_ERROR,
-    errorMessage: errorMessage
-  }
-}
+export function postQuestions (questions) {
+  console.log('posting')
+      return (dispatch) => 
+        request
+        .post('/api/v1')
+        .send(questions)
+        .then(res => {
+          console.log(res)
+          dispatch(recievedQuestions(res.body))
+        })
+        .catch(err => {
+          dispatch(showError(err.message))
+        })
+    }
+  
 
 export const updateQuestionCounter = (question, newCount1, newCount2) => {
   return {

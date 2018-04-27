@@ -10,6 +10,12 @@ router.get('/', function (req, res) {
     })
 })
 
+router.post('/', function (req, res) {
+    console.log(req.body)
+    db.saveQuestions(req.body)
+        .then(() => res.sendStatus(200))
+        .catch(err => console.log(err))
+    })
 router.put('/:id', (req, res) => {
     console.log(req.body)
     db.updateCounter(req.params.id, req.body.counter1, req.body.counter2)
