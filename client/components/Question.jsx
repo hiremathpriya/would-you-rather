@@ -1,9 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-const Question = ({option}) => {
+const Question = ({option, numberofclicks, totalnumberofclicks}) => {
+
+  let decimal = numberofclicks / totalnumberofclicks
+  let percentage = Math.round(decimal * 100)
+
   return <div>
-    {option}
+    {option}<br/>
+    {percentage}%
     </div>
 }
   
