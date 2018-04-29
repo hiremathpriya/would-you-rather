@@ -10,24 +10,30 @@ const Menu = () => {
             <h3 id="title"><b>Would you rather..?</b></h3>
         </div>
             <div className="row">
-                <Link to={'/submit'}>
-                    <div className="six columns">
+                
+                <div className="six columns">
+                    <Link to={'/submit'}>
                         <div id="card1" className="card">
                             <div id="holder1" className="holder">
                                 <h4 id="question1"><b>Submit a question</b></h4> 
                             </div>
                         </div>
-                    </div>
-                </Link>
-                <Link to={'/play'}> 
-                    <div className="six columns">
+                    </Link>        
+                </div>
+                
+                <div className="six columns">
+                    <Link to={'/play'}>
                         <div id="card2" className="card">
                             <div className="holder">
-                                <h4 id="question2"><b>Play!</b></h4> 
+                                <h4 id="question2">
+                                    <b>Play!</b>
+                                    
+                                </h4> 
                             </div>
                         </div>
-                    </div>
-                </Link>
+                    </Link>    
+                </div>
+                
             </div>            
              
         
