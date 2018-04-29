@@ -1,12 +1,13 @@
-const initialState = []
+import {SUBMITTED} from '../actions'
 
-function formReducer (state = false, action) {
+function submit (state = false, action) {
+  console.log('hit')
   switch(action.type) {
-    case 'SUBMITTED':
+    case SUBMITTED:
       return true
     default:
       return state
   }
 }
 
-module.exports = formReducer
+export default submit

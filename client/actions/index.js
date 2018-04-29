@@ -1,16 +1,10 @@
 import request from 'superagent'
 
-
-export function recievedQuestions(){
-    return {
-    type:'SUBMITTED'
-  }
-}
-
 export const SHOW_ERROR = 'SHOW_ERROR'
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const REQUEST_QUESTIONS = 'REQUEST_QUESTIONS'
 export const UPDATE_COUNTERS = 'UPDATE_COUNTERS'
+export const SUBMITTED = 'SUBMITTED'
 
 export const requestQuestions = () => {
   return {
@@ -26,22 +20,6 @@ export const receiveQuestions = (questions) => {
     questions: questions[index]
   }
 }// Edit cats action???
-
-
-export function postQuestions (questions) {
-  console.log('posting')
-      return (dispatch) => 
-        request
-        .post('/api/v1')
-        .send(questions)
-        .then(res => {
-          console.log(res)
-          dispatch(recievedQuestions(res.body))
-        })
-        .catch(err => {
-          dispatch(showError(err.message))
-        })
-    }
   
 
 export const updateQuestionCounter = (question, newCount1, newCount2) => {
@@ -77,3 +55,23 @@ export function updateQuestionCounterRequest (question, newCount1, newCount2) {
   }
 }
 
+export const recievedQuestions = (status)=>{
+  return {
+  type:SUBMITTED,
+  }
+}
+
+export const postQuestions = (questions)=> {
+  console.log('posting')
+      return (dispatch) => 
+        request
+        .post('/api/v1')
+        .send(questions)
+        .then(res => {
+          let status = res.status
+          dispatch(recievedQuestions(status))
+        })
+        .catch(err => {
+          dispatch(showError(err.message))
+        })
+    }
