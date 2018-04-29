@@ -8,7 +8,7 @@
     "test": "jest --watchAll",
     "start": "node server",
     "postinstall": "knex migrate:latest && knex seed:run",
-    "heroku-bostbuild": "webpack -p --progress"
+    "heroku-postbuild": "webpack -p --progress"
   },
   "author": "EDA",
   "license": "ISC",
