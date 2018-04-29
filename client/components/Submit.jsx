@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {postQuestions} from '../actions/index'
 
@@ -18,20 +19,26 @@ class Submit extends React.Component {
 
     }
     handleChange(e){
-        console.log(e.target.value)
         this.setState({
-            [e.target.name] : e.target.value
+            [e.target.name] : e.target.value,
+            recieved:false
+
         })
         
     }
 
     handleSubmit(e){
-        console.log(this.state)
         e.preventDefault()
         this.props.dispatch(postQuestions(this.state))
     }
 
+    alertUser(){
+        console.log('hi')
+        return  (state.recieved ==true)
+    }
+
     render(){
+        console.log(this.props)
         return (
         <React.Fragment>
             <div className="container">
@@ -39,7 +46,7 @@ class Submit extends React.Component {
                     <h3 id="title"><b>Would you rather..?</b></h3>
                 </div>
                 <div className="row">
-                    <form onSubmit={this.handleSubmit}>
+                    <form onSubmit={this.handleSubmit} method='post'>
                         <input className="input" name="option1" onChange={this.handleChange} placeholder="Enter option one" type="text"/><br/>
                         <input className="input" name="option2" onChange={this.handleChange} placeholder="Enter option two" type="text"/><br/>
                         <input className ="submit" type="submit"/>
@@ -47,13 +54,21 @@ class Submit extends React.Component {
                 </div>            
                 <div id="card3" className="card3">
                     <div className="holder">
-                        <h4 id="#"><b>Return to landing page</b></h4> 
+                        <Link to='/'><h4><b>Return to start</b></h4></Link> 
                     </div>
                 </div>
+                {this.props.recieved && <div>{window.alert('Great! Your quetsion has been successfully submitted')}{window.location.reload()}</div>}
             </div>
         </React.Fragment>  
         )}
    
 }
 
-export default connect()(Submit)
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        recieved: state.submit
+    }
+}
+
+export default connect(mapStateToProps)(Submit)

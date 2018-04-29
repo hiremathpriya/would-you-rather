@@ -8,7 +8,7 @@ import Menu from './Menu'
 const App = () => (
   <div className='app'>
     <Router>
-      <div>
+      <div className='container'>
       <Route exact path='/' component={Menu}/>
       <Route exact path='/submit' component={Submit}/>
       <Route exact path='/play' component={Play}/>

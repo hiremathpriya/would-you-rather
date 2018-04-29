@@ -1,5 +1,6 @@
 import React from 'react'
 import Question from './Question'
+import {Link} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchQuestions, updateQuestionCounterRequest } from '../actions'
 
@@ -83,7 +84,7 @@ class Play extends React.Component {
                     <div className="row">
                         <div id="card4" className="card2">
                             <div className="holder">
-                                <h4 id=""><b>Return to landing page</b></h4>
+                                <Link to={'/'}><h4 id=""><b>Return to start</b></h4></Link>
                             </div>
                         </div>
                     </div>
